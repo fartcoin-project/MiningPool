@@ -1,0 +1,59 @@
+{
+    "name": "node-open-mining-portal",
+    "version": "1.0.10",
+    "description": "An extremely efficient, highly scalable, all-in-one, easy to setup cryptocurrency mining pool",
+    "keywords": [
+        "stratum",
+        "mining",
+        "pool",
+        "server",
+        "poolserver",
+        "bitcoin",
+        "litecoin",
+        "scrypt"
+    ],
+    "homepage": "https://github.com/nasa8x/node-open-mining-portal",
+    "bugs": {
+        "url": "https://github.com/nasa8x/node-open-mining-portal/issues"
+    },
+    "license": "GPL-2.0",
+    "author": "Matthew Little",
+    "contributors": [
+        "devnulled",
+        "foxer666",
+        "vekexasia",
+        "TheSeven",
+        "Kris Klosterman"
+    ],
+    "main": "init.js",
+    "bin": {
+        "block-notify": "./scripts/blockNotify.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nasa8x/node-open-mining-portal.git"
+    },
+    "dependencies": {
+        "async": "^2.6.1",
+        "bignumber.js": "^6.0.0",
+        "body-parser": "^1.18.3",
+        "colors": "^1.3.3",
+        "compression": "^1.7.3",
+        "dateformat": "^2.2.0",
+        "dot": "^1.1.2",
+        "express": "^4.16.4",
+        "moment": "^2.24.0",
+        "mysql": "^2.16.0",
+        "node-json-minify": "^1.0.0",
+        "node-watch": "^0.5.9",
+        "nonce": "^1.0.4",
+        "redis": "^2.7.1",
+        "request": "^2.88.0",
+        "stratum-pool": "git://github.com/nasa8x/node-stratum-pool.git",
+        "winston": "^3.2.1",
+        "winston-daily-rotate-file": "^2.0.0-rc.2"
+    },
+    "engines": {
+        "node": ">=8.1.4"
+    }
+}

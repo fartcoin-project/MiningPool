@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+.vscode
+config.json
+configs/*.json
+!configs/geekcash_example.json
+!configs/litecoin_example.json
+!configs/vertcoin_example.json
+logs/
+!.gitkeep

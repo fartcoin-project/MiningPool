@@ -1,0 +1,392 @@
+<style>
+    #topCharts {
+        padding: 18px;
+    }
+
+    #topCharts>div>div>svg {
+        display: block;
+        height: 280px;
+    }
+
+    .chartWrapper {
+        border: solid 1px #c7c7c7;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 18px;
+    }
+
+    .chartLabel {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 4px;
+    }
+
+    .ct-grids line {
+        color: #c7c7c7;
+    }
+
+    .ct-labels span {
+        line-height: 16px;
+        font-size: 12px;
+        color: #c7c7c7;
+    }
+
+    .ct-grid {
+        stroke: #c7c7c7;
+        stroke-width: 1px;
+        stroke-dasharray: 1px;
+    }
+
+    .ct-chart-line {
+        stroke: #fff;
+    }
+
+    .ct-series-a .ct-bar,
+    .ct-series-a .ct-line,
+    .ct-series-a .ct-slice-donut {
+        stroke: #CF6754;
+    }
+
+    .ct-series-a .ct-point {
+        stroke: transparent;
+    }
+    table#blockInfoTable {
+    width: 1200px;
+}
+</style>
+
+<!-- Page -->
+<div class="page">
+    <div class="page-content container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Algorithm</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="Algorithm">Geek</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Hashrate</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="statsHashrate">{{=it.stats.pools['geekcash'].hashrateString}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Workers</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="statsMiners">{{=it.stats.pools['geekcash'].workerCount}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Pool Fee</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="Fee">{{=it.stats.pools['geekcash'].rewardRecipients}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>UTC Time</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="UtcTime"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <strong>Time Payout</strong>
+                    </div>
+                    <div class="panel-body text-center">
+                        <label class="top-label" id="nextPayout">{{=it.stats.pools['geekcash'].paymentInterval}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <h4>Getting Started</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="slight" id="informationsoutput">
+                                    <table style="width: 100%;" class="table-poolinfo">
+                                        <tbody>
+                                            <!-- <tr>
+                                                <td>
+                                                    Stratum Protocol:
+                                                </td>
+                                                <td>
+                                                    <pre><code>mining.geekcash.org:3333</code></pre>
+                                                </td>
+                                            </tr> -->
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px; padding-bottom: 10px; color: #CF6754;">
+                                                    Please choose one of our three following stratum-domains that fits your connection the best.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px; padding-bottom:10px;">
+                                                    Stratum Protocol EU:
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <pre><code>-a geek -o stratum+tcp://eu.mining.geekcash.org:3333 -u {WALLET-ADDRESS}</code></pre>
+                                                </td>   
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px; padding-bottom:10px;">
+                                                    Stratum Protocol US:
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <pre><code>-a geek -o stratum+tcp://us.mining.geekcash.org:3333 -u {WALLET-ADDRESS}</code></pre>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px; padding-bottom:10px;">
+                                                    Stratum Protocol Asia:
+                                                </td>
+                                            </tr>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <pre><code style="pointer-events: none; color: #2A2B3C">-a geek -o stratum+tcp://asia.mining.geekcash.org:3333 -u {WALLET-ADDRESS}</code></pre>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <!-- <span style="font-weight: bold;">WINDOWS </span>- CPUMiner [preconfigured] -->
+                                                    <button class="btn " type="button" style="color: white;background-color: #CF6754;" onclick="downloadcpuminer()">
+                                                        <i class="fas fa-download"></i> Download
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                   
+                                                </td>
+                                            </tr>
+                                            <!-- <tr>
+                                                <td>
+                                                    <span style="font-weight: bold;">LINUX </span>- CPUMiner
+                                                    <button class="btn " type="button" style="color: white;background-color: #CF6754; padding: 4px; font-size: 12px" onclick="downloadLinux()">
+                                                        <i class="fas fa-download"></i> Download
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                   
+                                                </td>
+                                            </tr> -->
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px; padding-bottom:10px; color: #CF6754;">
+                                                    <small>The GEEK Pool is adjusting the difficulty of your miner automatically.
+                                                        <br> If you somehow want to set the difficulty by your own you use set
+                                                        it using the password parameter. Example (0.2 Difficulty):</small>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <pre><code>-a geek -o stratum+tcp://mining.geekcash.org:3333 -u {WALLET-ADDRESS} -p d=0.2</code></pre>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2" style="border-top: solid #CF6754 2px;padding-top: 10px; padding-bottom:10px;">
+                                                    <p> Enter your wallet-address to get in-depth statistics about your mining
+                                                        process: </p>
+                                                    <div class="input-group" id="navSearch" style="width: 100%;">
+                                                        <input id="search-miner" class="form-control" style="color: #fff; background-color: #1E1F2A; border: solid #CF6754 0.5px;"
+                                                            placeholder="Wallet Address" type="text">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn " type="button" style="color: white;background-color: #CF6754;" onclick="searchMiner()">
+                                                                <i class="fa fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-8 col-md-12 col-xs-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <div class="panel-actions"></div>
+                        <h4>Last Blocks</h4>
+                    </div>
+                    <div class="panel-body" id="lastBlockTableDiv">
+                        <div id="lastBlockTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-12 table-responsive">
+                                    <table id='blockInfoTable' class="table  table-hover dataTable table-striped w-full fixed" data-plugin="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 5%">Amount</th>
+                                                <th style="width: 10%">Difficulty</th>
+                                                <th style="width: 50%">Block</th>
+                                                <th style="width: 25%">Time</th>
+                                                <th style="width: 10%">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id='blockTableBody'>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h4>Hashrate Per Pool</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="ct-chart" id="hashRateChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h4>Blocks Pending Per Pool</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="ct-chart" id="blockPendingChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        document.querySelector('main').appendChild(document.createElement('script')).src =
+            '/static/datatable.js';
+
+        document.querySelector('main').appendChild(document.createElement('script')).src =
+            '/static/chartist.js';
+        startTime()
+        //Update data
+        statsSource.addEventListener('message', function (e) {
+            getTable()
+            //update script 
+            document.querySelector('script[src="/static/chartist.js"]').remove();
+            document.querySelector('main').appendChild(document.createElement('script')).src =
+                '/static/chartist.js';
+            var stats = JSON.parse(e.data);
+            for (algo in stats.algos) {
+                $('#statsMiners').text(stats.algos[algo].workers);
+                $('#statsHashrate').text(stats.algos[algo].hashrateString);
+            }
+            for (var pool in stats.pools) {
+                $('#statsMiners').text(stats.pools[pool].workerCount);
+                $('#statsHashrate').text(stats.pools[pool].hashrateString);
+            }
+        });
+    });
+
+    function startTime() {
+        var today = new Date();
+        var h = today.getUTCHours();
+        var m = today.getUTCMinutes();
+        var s = today.getUTCSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('UtcTime').innerHTML =
+            h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+    }
+
+    function searchMiner() {
+        var searchKey = $('#search-miner').val()
+        window.location.href = `/workers/${searchKey}`;
+    }
+    // function downloadWindows() {
+    //     window.location.href = `https://github.com/GeekCash/cpuminer-multi/files/1957532/cpuminer-x64.zip`;
+    //     }
+    // function downloadLinux() {
+    //     window.location.href = `https://github.com/GeekCash/cpuminer-multi/files/1957549/cpuminer-multi.zip`;
+    //     }
+    function downloadcpuminer(){
+        var win = window.open(`https://github.com/GeekCash/geekcash/releases`, '_blank');
+        win.focus();
+        }
+
+    function getTable() {
+        $.getJSON('/api/valid_blocks', function (data) {
+            data.sort(function (a, b) {
+                return b.height - a.height;
+            });
+            // Remove old dataTable
+            var table = $("#blockInfoTable").dataTable();
+            table.fnDestroy();
+            $("#blockTableBody").empty();
+            // Update table by new data
+            for (var i = 0; i < data.length; i++) {
+                var tr;
+                tr = $('<tr/>');
+                tr.append("<td>" + Math.round(data[i].value, 0) + "</td>");
+                tr.append("<td>" + Math.round(data[i].difficulty * 100000) / 100000 + "</td>");
+                tr.append(
+                    `<td>  <a href="https://explorer.geekcash.org/block/${data[i].blockHash}">${data[i].blockHash.substring(0, 30)}...</a></td>`
+                );
+                tr.append("<td>" + data[i].time + "</td>");
+                var status = data[i].status
+                var style = status == "Pending" ? "style=\" color: #CF6754;\"" : "style=\" color: #7EA550;\""
+
+                tr.append(`<td ${style}>` + status + "</td>");
+                $('#blockTableBody').append(tr);
+            }
+            $("#blockInfoTable").dataTable({
+
+                searching: false,
+                ordering: false,
+                lengthChange: false
+
+            }).fnDraw();;
+            // Remove default sort asc css icon
+            $("#blockInfoTable>thead>tr>th.sorting_asc").removeClass("sorting_asc");
+        })
+    }
+</script>

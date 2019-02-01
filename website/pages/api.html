@@ -1,0 +1,302 @@
+<div class="wrapper">
+
+    <!-- Header-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">
+                    POOL
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" style="height:100vh">
+                <ul class="nav navbar-nav" id="mainNavbar">
+                    <li><a class="min" href="./overview"><i class="pe-7s-global"></i></a><a class="default" href="./overview">Overview</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="input-group" id="navSearch">
+                            <input class="form-control" placeholder="Wallet Address" type="text" style="background-color: white; border: solid #52555f 0.5px;">
+                            <span class="input-group-btn" style="">
+                                <button class="btn btn-default" type="button" style="color: white;"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End header-->
+<!-- Main content-->
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none" id="algorithm">Quark
+                </h2>
+                <div class="small">Algorithm</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none" style="" id="hashrate">-
+                </h2>
+                <div class="small">Hashrate</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none" id="workers">-
+                </h2>
+                <div class="small">Workers</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none">5.0%
+                </h2>
+                <div class="small">ALQO Developer Fee</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none" id="utcTime">-
+                </h2>
+                <div class="small">UTC Time</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="panel-body">
+                <h2 class="m-b-none" id="payoutTimer">-
+                </h2>
+                <div class="small">Next Payout: <span id="nextPayoutTime"></span></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-4 col-md-12 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel-body h-200 list">
+                        <div class="stats-title pull-left" >
+                            <h4>Getting Started</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel-body">
+                        <div class="text-center slight" id="informationsoutput">
+                            <table style="width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Stratum Protocol:
+                                        </td>
+                                        <td>
+                                            <pre><code>mining.alqo.org:4033</code></pre>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="padding-top:20px; color: #ed6f35;">
+                                            <small>The ALQO Stratum is choosing one of our two main-nodes that fits your connection the best. However if you want to choose by yourself make sure to use the following stratum-domains:</small>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Stratum Protocol EU:
+                                        </td>
+                                        <td>
+                                            <pre><code>eu.mining.alqo.org:4033</code></pre>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Stratum Protocol US:
+                                        </td>
+                                        <td>
+                                            <pre><code>us.mining.alqo.org:4033</code></pre>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            Usage:
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <pre><code>-a quark -o stratum+tcp://mining.alqo.org:4033 -u {WALLET-ADDRESS}</code></pre>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: bold;">NVIDIA </span>- CCMiner [preconfigured]
+                                        </td>
+                                        <td>
+                                            <a href="https://pool.alqo.org/ccminer.zip">https://pool.alqo.org/ccminer.zip</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: bold;">AMD </span>- SGMiner [preconfigured]
+                                        </td>
+                                        <td>
+                                            <a href="https://pool.alqo.org/sgminer.zip">https://pool.alqo.org/sgminer.zip</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="padding-top:20px; color: #ed6f35;">
+                                            <small>The ALQO Pool is adjusting the difficulty of your miner automatically.<br>
+                                            If you somehow want to set the difficulty by your own you use set it using the password parameter.
+                                            Example (0.2 Difficulty):</small>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <pre><code>-a quark -o stratum+tcp://mining.alqo.org:4033 -u {WALLET-ADDRESS} -p d=0.2</code></pre>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2" style="border-top: solid #ed6f35 2px;padding-top: 16px;">
+                                            <p> Enter your wallet-address to get in-depth statistics about your mining process: </p>
+                                            <div class="input-group" id="navSearch" style="width: 100%;">
+                                                <input class="form-control" style="background-color: #24262d; border: solid #ed6f35 0.5px;" placeholder="Wallet Address" type="text">
+                                                <span class="input-group-btn" style="">
+                                                    <button class="btn btn-default" type="button" style="color: white;background-color: #ed6f35;"><i class="fa fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 col-md-12 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-body h-200 list">
+                        <div class="stats-title pull-left" >
+                            <h4>Last Blocks</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel-body" id="lastBlockTableDiv">
+                        <table class="table" id="lastBlockTable" style="min-width: 974px;">
+                            <thead>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td>Difficulty</td>
+                                    <td>Block</td>
+                                    <td>Time</td>
+                                    <td>Status</td>	 	
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel-body h-200 list">
+                        <div class="stats-title pull-left" >
+                            <h4>Hash rate the last 24h [TH/s]</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel-body">
+                        <div class="text-center slight">
+                        </div>
+
+                        <div class="flot-chart" style="height: 236px;margin-top: 5px">
+                            <div class="flot-chart-content" id="chart1"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-xs-12">
+        <div class="panel panel-filled c-accent">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel-body h-200 list">
+                        <div class="stats-title pull-left" >
+                            <h4>Pool Hashrate the last 24h [TH/s]</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel-body">
+                        <div class="text-center slight">
+                        </div>
+
+                        <div class="flot-chart" style="height: 236px;margin-top: 5px">
+                            <div class="flot-chart-content" id="chart2"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- End main content-->        
+</div>

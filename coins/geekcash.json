@@ -1,0 +1,7 @@
+{
+    "name": "Fartcoin",
+    "symbol": "FART",
+    "algorithm": "scrypt",
+    "peerMagic": "f2cab4db",
+    "peerMagicTestnet": "f2cab4db"   
+}
