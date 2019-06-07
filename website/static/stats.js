@@ -46,13 +46,13 @@ function buildChartData(){
 
         }
 
-
     }
 
     poolWorkerData = [];
     poolHashrateData = [];
     poolBlockData = [];
 
+    for (var pool in pools){
         poolWorkerData.push({
             key: pool,
             values: pools[pool].workers
@@ -66,6 +66,7 @@ function buildChartData(){
             values: pools[pool].blocks
         })
     }
+}
 
 function getReadableHashRateString(hashrate){
     var i = -1;
@@ -172,7 +173,6 @@ statsSource.addEventListener('message', function(e){
         var time = stats.time * 1000;
         for (var f = 0; f < poolKeys.length; f++) {
             var pool =  poolKeys[f];
-            // console.log('stats.pools[pool]',stats.pools[pool])
             for (var i = 0; i < poolWorkerData.length; i++) {
                 if (poolWorkerData[i].key === pool) {
                     poolWorkerData[i].values.shift();
@@ -197,4 +197,6 @@ statsSource.addEventListener('message', function(e){
         }
         TriggerChartUpdates();
     }
+
+
 });

@@ -12,7 +12,6 @@ const BigNumber = require('bignumber.js');
 const loggerFactory = require('./logger.js');
 
 module.exports = function () {
-    let nextPayment;
     let logger = loggerFactory.getLogger('PaymentProcessing', 'system');
 
     var poolConfigs = JSON.parse(process.env.pools);
@@ -130,7 +129,6 @@ function SetupForPool(poolOptions, setupFinished) {
             try {
                 processPayments();
                 logger.info("Set up to process payments every %s seconds", processingConfig.paymentInterval);
-                nextPayment = new Date() + processingConfig.paymentInterval * 1000
             } catch (e) {
                 logger.error("There was error during payment processor setup %s", JSON.stringify(e));
                 throw e;
@@ -473,12 +471,12 @@ function SetupForPool(poolOptions, setupFinished) {
                             logger.info('Worker %s have reached minimum payout threshold (%s above minimum %s)', w, toSend.toString(10), minPayment.toString(10));
                             totalSent = totalSent.plus(toSend);
                             logger.silly('totalSent = %s', totalSent.toString(10));
-                            var address = worker.address = (worker.address || getProperAddress(w));                            
-                                logger.silly('address = %s', address);
-                                worker.sent = addressAmounts[address] = toSend;
-                                logger.silly('worker.sent = %s', worker.sent.toString(10));
-                                worker.balanceChange = BigNumber.min(worker.balance, worker.sent).multipliedBy(new BigNumber(-1));
-                                logger.silly('worker.balanceChange = %s', worker.balanceChange.toString(10));
+                            var address = worker.address = (worker.address || getProperAddress(w));
+                            logger.silly('address = %s', address);
+                            worker.sent = addressAmounts[address] = toSend;
+                            logger.silly('worker.sent = %s', worker.sent.toString(10));
+                            worker.balanceChange = BigNumber.min(worker.balance, worker.sent).multipliedBy(new BigNumber(-1));
+                            logger.silly('worker.balanceChange = %s', worker.balanceChange.toString(10));
                         }
                         else {
                             logger.debug('Worker %s have not reached minimum payout threshold %s', w, minPayment.toString(10));

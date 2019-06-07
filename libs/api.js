@@ -18,26 +18,11 @@ module.exports = function(portalConfig, poolConfigs){
 
     this.liveStatConnections = {};
 
-    this.handleApiRequest = async function(req, res, next){
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    this.handleApiRequest = function(req, res, next){
         switch(req.params.method){
-            case 'mininginfo':
-            try {
-                var mininginfo =  await  portalStats.getmininginfo()
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(mininginfo);
-            } catch (err) {
-                res.send(400, JSON.stringify({error: err}));
-            }
-            return;                           
-            case 'stats':                
+            case 'stats':
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(portalStats.statsString);
-                return;
-            case 'valid_blocks':
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify(portalStats.validBlocks));
                 return;
             case 'pool_stats':
                 res.writeHead(200, { 'Content-Type': 'application/json' });

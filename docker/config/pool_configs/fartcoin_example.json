@@ -1,0 +1,63 @@
+{
+    "enabled": true,
+    "coin": "fartcoin.json",
+    "address": "FSWgesYSYroBmii1wqgDzbBKyKYbhM42bh",
+    "rewardRecipients": {
+        "FAX8SFeK7WhoLgMiMzPFFz6rUHNkgZeCuj": 1
+    },
+    "paymentProcessing": {
+        "enabled": true,
+        "paymentInterval": 3600,
+        "minimumPayment": 100,
+        "daemon": {
+            "host": "127.0.0.1",
+            "port": 13378,
+            "user": "rpcuser",
+            "password": "rpcpassword"
+        }
+    },
+    "ports": {
+         "4444": {
+                    "diff": 0.0002,
+                    "varDiff": {
+                        "minDiff": 0.00024414,
+                        "maxDiff": 512,
+                        "targetTime": 15,
+                        "retargetTime": 90,
+                        "variancePercent": 30
+                    }
+                }
+    },
+    "daemons": [
+        {
+            "host": "127.0.0.1",
+            "port": 13378,
+            "user": "rpcuser",
+            "password": "rpcpassword"
+        }
+    ],
+    "p2p": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "port": 13377,
+        "disableTransactions": true
+    },
+    "mposMode": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "port": 3306,
+        "user": "me",
+        "password": "mypass",
+        "database": "ltc",
+        "checkPassword": true,
+        "autoCreateWorker": false
+    },
+    "mongoMode": {
+        "enabled": false,
+        "host": "127.0.0.1",
+        "user": "user",
+        "pass": "pass",
+        "database": "pool",
+        "authMechanism": "DEFAULT"
+    }
+}

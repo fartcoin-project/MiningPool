@@ -34,14 +34,13 @@
 
 
 <div id="topCharts">
+
 {{ for(var pool in it.stats.pools) { }}
 
-    <div class="panel panel-default">
-        <div class="panel-heading text-center">
-            <h4>{{=it.stats.pools[pool].name}}</h4>
-        </div>
-        <div class="panel-body">
-            <table class="table table-hover dataTable table-striped w-full">
+    <div class="chartWrapper">
+        <div class="chartLabel">{{=it.stats.pools[pool].name}}</div>
+        <div class="chartHolder">
+            <table class="pure-table">
                 <thead>
                 <tr>
                     <th>Address</th>
@@ -51,10 +50,9 @@
                     <th>Hashrate</th>
                 </tr>
                 </thead>
-                <tbody>
                 {{ for(var worker in it.stats.pools[pool].workers) { }}
                    {{var workerstat = it.stats.pools[pool].workers[worker];}}
-                    <tr >
+                    <tr class="pure-table-odd">
                         <td>{{=worker}}</td>
                         <td>{{=Math.floor(workerstat.shares)}}</td>
                         <td>{{=Math.floor(workerstat.invalidshares)}}</td>
@@ -62,7 +60,6 @@
                         <td>{{=workerstat.hashrateString}}</td>
                     </tr>
                 {{ } }}
-            </tbody>
             </table>
         </div>
     </div>

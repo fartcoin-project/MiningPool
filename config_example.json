@@ -35,8 +35,8 @@
     "website": {
         "enabled": true,
         "host": "127.0.0.1",
-        "port": 80,
-        "stratumHost": "localhost",
+        "port": 13371,
+        "stratumHost": "fartcoin-project.com",
         "stats": {
             "updateInterval": 60,
             "historicalRetention": 43200,
@@ -77,7 +77,7 @@
                 "4444": {
                     "diff": 10,
                     "varDiff": {
-                        "minDiff": 16,
+                        "minDiff": 0.00024414,
                         "maxDiff": 512,
                         "targetTime": 15,
                         "retargetTime": 90,
@@ -108,9 +108,9 @@
         "enabled": false,
         "updateInterval": 600,
         "depth": 0.90,
-        "usePoloniex": true,
-        "useCryptsy": true,
-        "useMintpal": true,
-        "useBittrex": true
+        "usePoloniex": false,
+        "useCryptsy": false,
+        "useMintpal": false,
+        "useBittrex": false
     }
 }

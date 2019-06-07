@@ -33,21 +33,16 @@ module.exports = function () {
     var logSystem = 'Website';
 
 
-    // var pageFiles = {
-    //     'index.html': 'index',
-    //     'overview.html': '',
-    //     'getting_started.html': 'getting_started',
-    //     'stats.html': 'stats',
-    //     'tbs.html': 'tbs',
-    //     'workers.html': 'workers',
-    //     'api.html': 'api',
-    //     'admin.html': 'admin',
-    //     'mining_key.html': 'mining_key'
-    // };
     var pageFiles = {
         'index.html': 'index',
-        'overview.html': '',
-        'workers.html': 'workers'
+        'home.html': '',
+        'getting_started.html': 'getting_started',
+        'stats.html': 'stats',
+        'tbs.html': 'tbs',
+        'workers.html': 'workers',
+        'api.html': 'api',
+        'admin.html': 'admin',
+        'mining_key.html': 'mining_key'
     };
 
     var pageTemplates = {};
@@ -103,6 +98,7 @@ module.exports = function () {
     watch('website', function (evt, filename) {
         var basename = path.basename(filename);
         if (basename in pageFiles) {
+            console.log(filename);
             readPageFiles([basename]);
             logger.debug('Reloaded file %s', basename);
         }
@@ -115,6 +111,7 @@ module.exports = function () {
     var buildUpdatedWebsite = function () {
         portalStats.getGlobalStats(function () {
             processTemplates();
+
             var statData = 'data: ' + JSON.stringify(portalStats.stats) + '\n\n';
             for (var uid in portalApi.liveStatConnections) {
                 var res = portalApi.liveStatConnections[uid];
@@ -229,40 +226,6 @@ module.exports = function () {
             next();
 
     };
-    var routeworker = function (req, res, next) {
-        var address = req.params.address || '';
-       
-        var pageName = 'workers';
-        var stats = portalStats.stats;  
-        //Hard code for test
-        if(address != '') {
-            var workers =  stats.pools['geekcash'].workers
-            var searchWorker = stats.pools['geekcash'].workers[address]
-            stats.pools['geekcash'].workers ={}
-
-            if(searchWorker){
-                stats.pools['geekcash'].workers[address] = searchWorker
-            } else {
-                
-            }          
-        }
-        pageProcessed[pageName] = pageTemplates[pageName]({
-            poolsConfigs: poolConfigs,
-            stats: stats,
-            portalConfig: portalConfig
-        });
-        var workersProcessed = pageTemplates.index({
-            page: pageProcessed[pageName],
-            selected: pageName,
-            stats: stats,
-            poolConfigs: poolConfigs,
-            portalConfig: portalConfig
-        });
-            res.header('Content-Type', 'text/html');
-            res.end(workersProcessed);
-
-          
-    };
 
 
     var app = express();
@@ -282,12 +245,12 @@ module.exports = function () {
     app.get('/key.html', function (req, res, next) {
         res.end(keyScriptProcessed);
     });
-    app.get('/workers/:address', routeworker);
-    app.get('/:page/', route);
+
+    app.get('/:page', route);
     app.get('/', route);
 
-    app.get('/api/:method', async function (req, res, next) {
-        await portalApi.handleApiRequest(req, res, next);
+    app.get('/api/:method', function (req, res, next) {
+        portalApi.handleApiRequest(req, res, next);
     });
 
     app.post('/api/admin/:method', function (req, res, next) {

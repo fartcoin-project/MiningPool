@@ -86,13 +86,10 @@ module.exports = function(poolConfig){
         var dateNow = Date.now();
         var hashrateData = [ isValidShare ? shareData.difficulty : -shareData.difficulty, shareData.worker, dateNow];
         redisCommands.push(['zadd', coin + ':hashrate', dateNow / 1000 | 0, hashrateData.join(':')]);
+
         if (isValidBlock){
             redisCommands.push(['rename', coin + ':shares:roundCurrent', coin + ':shares:round' + shareData.height]);
-            // push redis data blockHash: txHash: height: worker: blockReward: blockDiff: time:
-            redisCommands.push(['sadd',
-               coin + ':blocksPending',
-               [shareData.blockHash, shareData.txHash, shareData.height, shareData.worker,shareData.blockReward, shareData.blockDiff,shareData.time]
-               .join(':')]);
+            redisCommands.push(['sadd', coin + ':blocksPending', [shareData.blockHash, shareData.txHash, shareData.height].join(':')]);
             redisCommands.push(['hincrby', coin + ':stats', 'validBlocks', 1]);
         }
         else if (shareData.blockHash){
@@ -103,6 +100,7 @@ module.exports = function(poolConfig){
             if (err)
                 logger.error(logSystem, logComponent, logSubCat, 'Error with share processor multi ' + JSON.stringify(err));
         });
+
 
     };
 
