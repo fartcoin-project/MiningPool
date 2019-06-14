@@ -1,7 +1,7 @@
+
 {
-    "name": "Fartcoin",
-    "symbol": "FART",
-    "algorithm": "scrypt",
-    "peerMagic": "f2cab4db",
-    "peerMagicTestnet": "f2cab4db"   
+    "name": "GeekCash",
+    "symbol": "GEEK",
+    "algorithm": "geek"
+    // "mposDiffMultiplier": 256
 }
