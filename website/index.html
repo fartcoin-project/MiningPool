@@ -21,7 +21,7 @@
     <script src="/static/main.js"></script>
     <link rel="stylesheet" href="/static/style.css">
 
-    <title>NOMP</title>
+    <title>Fart-Pool</title>
 
 </head>
 
@@ -30,39 +30,67 @@
 <header>
     <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal">
 
-        <a class="pure-menu-heading hot-swapper" href="/"><i class="fa fa-home"></i>&nbsp;NOMP</a>
+        <a class="pure-menu-heading hot-swapper" href="/"><i class="fa fa-home"></i>&nbsp;Info</a>
 
         <ul>
+		<!-- 
             <li class="{{? it.selected === 'getting_started' }}pure-menu-selected{{?}}">
                 <a class="hot-swapper" href="/getting_started">
                     <i class="fa fa-rocket"></i>&nbsp;
                     Getting Started
                 </a>
             </li>
-            <li class="{{? it.selected === 'stats' }}pure-menu-selected{{?}}">
+        -->    
+			<li class="{{? it.selected === 'stats' }}pure-menu-selected{{?}}">
                 <a class="hot-swapper" href="/stats">
                     <i class="fa fa-bar-chart-o"></i>&nbsp;
                     Graph Stats
                 </a>
             </li>
+		<!--
             <li class="{{? it.selected === 'tbs' }}pure-menu-selected{{?}}">
                 <a class="hot-swapper" href="/tbs">
                     <i class="fa fa-table"></i>&nbsp;
                     Tab Stats
                 </a>
             </li>
+		-->
             <li class="{{? it.selected === 'workers' }}pure-menu-selected{{?}}">
                 <a class="hot-swapper" href="/workers">
                     <i class="fa fa-cogs"></i>&nbsp;
                     Workers Stats
                 </a>
             </li>
+		<!--	
             <li class="{{? it.selected === 'api' }}pure-menu-selected{{?}}">
                 <a class="hot-swapper" href="/api">
                     <i class="fa fa-code"></i>&nbsp;
                     API
                 </a>
             </li>
+        -->   
+			<li class="{{? it.selected === 'BlockExplorer' }}pure-menu-selected{{?}}">
+                <a  href="http://www.memesexchange.com:11337/">
+                    <i class="fa fa-bar-chart-o"></i>&nbsp;
+                    BlockExplorer
+                </a>
+            </li>
+			<li class="{{? it.selected === 'Fartcoin-Project' }}pure-menu-selected{{?}}">
+                <a  href="https://www.fartcoin-project.com">
+                    <i class="fa fa-cogs"></i>&nbsp;
+                    Fartcoin-Project
+                </a>
+            </li>
+            <li class="{{? it.selected === 'MemesExchange' }}pure-menu-selected{{?}}">
+                <a  href="https://www.memesexchange.com:13337/">
+                    <i class="fa fa-table"></i>&nbsp;
+                    MemesExchange
+                </a>
+            </li>
+
+
+
+
         </ul>
     </div>
 </header>
@@ -76,10 +104,6 @@
     <div class="footer_container">
         <span>Powered by <a href="https://github.com/foxer666/node-open-mining-portal">NOMP</a></span>
 
-        <div id="communityFooter">
-            <iframe src="//ghbtns.com/github-btn.html?user=foxer666&repo=node-open-mining-portal&type=watch&count=true"
-                    allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe>
-        </div>
     </div>
 </footer>
 
