@@ -47,7 +47,7 @@
         "node-json-minify": "^1.0.0",
         "node-watch": "^0.5.9",
         "nonce": "^1.0.4",
-        "redis": "^2.7.1",
+        "redis": "^3.1.1",
         "request": "^2.88.0",
         "stratum-pool": "git://github.com/nasa8x/node-stratum-pool.git",
         "winston": "^3.2.1",
