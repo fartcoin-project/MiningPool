@@ -34,7 +34,7 @@
         "url": "https://github.com/nasa8x/node-open-mining-portal.git"
     },
     "dependencies": {
-        "async": "^2.6.1",
+        "async": "^2.6.4",
         "bignumber.js": "^6.0.0",
         "body-parser": "^1.18.3",
         "colors": "^1.3.3",
